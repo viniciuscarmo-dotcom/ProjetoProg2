@@ -67,7 +67,7 @@ public class Eleicao {
         try {
             LocalDateTime dataAgora = LocalDateTime.now();
             String data = dataAgora.toString();
-            String nomeDoArquivo = "Relatório da Eleição de.txt";
+            String nomeDoArquivo = "Relatório da Eleição.txt";
             FileWriter arquivo = new FileWriter(nomeDoArquivo);
             PrintWriter gravarArquivo = new PrintWriter(arquivo);
 
@@ -89,3 +89,4 @@ public class Eleicao {
         }
     }
 }
+
