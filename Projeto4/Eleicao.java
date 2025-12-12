@@ -9,7 +9,7 @@ import java.util.Map;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 public class Eleicao {
     static double numDeVotosValidos;
@@ -62,12 +62,14 @@ public class Eleicao {
         System.out.println("Caminho do arquivo da eleição gerado: " + nomeDoArquivo);
     }
 
-    //Criação do arquivo da eleição ordenada pela quantidade de votos do com os votos Brancos/Nulos no começo
+    // Criação do arquivo da eleição ordenada pela quantidade de votos do com os votos Brancos/Nulos no começo
     static private String gerarArquivoDaEleicao(Map<String, Integer> registroDeVotos) {
         try {
-            LocalDateTime dataAgora = LocalDateTime.now();
-            String data = dataAgora.toString();
-            String nomeDoArquivo = "Relatório da Eleição.txt";
+            ZonedDateTime dataAgora = ZonedDateTime.now();
+            // Transforma dataAgora em string, pega só a parta da string antes do ponto (posição 18) e retira todos os : da string
+            String data = dataAgora.toString().substring(0,18).replace(":", "");
+            System.out.println(data);
+            String nomeDoArquivo = "Relatório da Eleição " + data + ".txt";
             FileWriter arquivo = new FileWriter(nomeDoArquivo);
             PrintWriter gravarArquivo = new PrintWriter(arquivo);
 
@@ -89,4 +91,3 @@ public class Eleicao {
         }
     }
 }
-
