@@ -7,7 +7,7 @@ public class Candidato extends Pessoa implements Comparable<Candidato>{
     static List<Candidato> listaDeCandidatos = new ArrayList<>();
     String partido;
     int numeroDoCandidato;
-    int numDeVotos;
+    private int numDeVotos;
 
     public Candidato (String nome, String dataDeNascimento, String cpf, String partido, int numeroDoCandidato) {
         super(nome, dataDeNascimento, cpf);
@@ -33,6 +33,7 @@ public class Candidato extends Pessoa implements Comparable<Candidato>{
                 );
     }
 
+    // Verifica qual dos candidatos é mais velho, caso tenham a mesma idade sorteia um deles
     static Candidato quemEhMaisVelho(Candidato candidato1, Candidato candidato2) {
         // Verifica ano, mês e dia de nascimento para dizer quem é mais velho
         if (candidato1.anoDeNascimento < candidato2.anoDeNascimento) {
@@ -71,5 +72,14 @@ public class Candidato extends Pessoa implements Comparable<Candidato>{
     @Override
     public int compareTo(Candidato outroCandidato) {
         return outroCandidato.numDeVotos - this.numDeVotos;
+    }
+
+    public int getNumDeVotos() {
+        return numDeVotos;
+    }
+
+    // Adiciona um voto ao candidato
+    public void adicionaNumDeVotos() {
+        this.numDeVotos++;
     }
 }

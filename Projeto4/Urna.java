@@ -1,10 +1,10 @@
 public class Urna {
 	public static void votar(Eleitor eleitor, int voto) {
-		if (!eleitor.jaVotou) {
-			eleitor.jaVotou = true;
+		if (!eleitor.isJaVotou()) {
+			eleitor.setJaVotou(true);
 			Eleitor.numDeVotantes++;
 			try {
-				Candidato.cadastroDeCandidatos.get(voto).numDeVotos++;
+				Candidato.cadastroDeCandidatos.get(voto).adicionaNumDeVotos();
 			} catch (NullPointerException e){
 				Candidato.votosNulosOuBrancos++;
 			}

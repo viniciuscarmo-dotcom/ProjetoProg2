@@ -11,7 +11,7 @@ public class Eleicao {
     static Candidato maisVelho;
 
     static public void contagemDeVotos() {
-        Map<String, Integer> registroDeVotos = new HashMap<String, Integer>();
+        Map<String, Integer> registroDeVotos = new HashMap<>();
         String nomeDoArquivo;
         String empate = ".";
 
@@ -21,14 +21,14 @@ public class Eleicao {
         // Cria um mapa com o nome do candidato e número de votos (incluindo os votos brancos ou nulos)
         // e adiciona um por um nesse mapa, ao mesmo tempo que checa quem foi o(s) vencedor(es)
         for (Candidato candidato : Candidato.listaDeCandidatos) {
-            registroDeVotos.put(candidato.nome, candidato.numDeVotos);
-            numDeVotosValidos += candidato.numDeVotos;
+            registroDeVotos.put(candidato.nome, candidato.getNumDeVotos());
+            numDeVotosValidos += candidato.getNumDeVotos();
 
-            if (candidato.numDeVotos == maiorVotacao) {
+            if (candidato.getNumDeVotos() == maiorVotacao) {
                 vencedor.add(candidato);
             }
-            else if (candidato.numDeVotos > maiorVotacao) {
-                maiorVotacao = candidato.numDeVotos;
+            else if (candidato.getNumDeVotos() > maiorVotacao) {
+                maiorVotacao = candidato.getNumDeVotos();
                 vencedor.clear();
                 vencedor.add(candidato);
             }
@@ -61,8 +61,8 @@ public class Eleicao {
     static private String gerarArquivoDaEleicao(Map<String, Integer> registroDeVotos) {
         try {
             ZonedDateTime dataAgora = ZonedDateTime.now();
-            // Transforma dataAgora em string, pega só a parte da string antes do ponto (posição 18) e retira todos os ":" da string
-            String data = dataAgora.toString().substring(0,18).replace(":", "");
+            // Transforma dataAgora em string, pega só a parte da string até o horário (posição 19), tira os pontos e substitui todos os ":" da string pra "-"
+            String data = dataAgora.toString().substring(0,19).replace(".", "").replace(":", "-").replace("T", " ");
             String nomeDoArquivo = "Relatório da Eleição " + data + ".txt";
 
             try (FileWriter arquivo = new FileWriter(nomeDoArquivo)) {
@@ -77,8 +77,8 @@ public class Eleicao {
                 gravarArquivo.printf("Votos Nulos ou Brancos; " + Candidato.votosNulosOuBrancos + "; " + String.format("%.2f", porcentagem) + "\n");
                 
                 for (int i = 0; i < Candidato.listaDeCandidatos.size(); i++) {
-                    porcentagem = (100.0 * (double) Candidato.listaDeCandidatos.get(i).numDeVotos / Eleitor.numDeVotantes);
-                    gravarArquivo.printf(Candidato.listaDeCandidatos.get(i) + "; " + Candidato.listaDeCandidatos.get(i).numDeVotos + "; " + String.format("%.2f", porcentagem) + "\n");
+                    porcentagem = (100.0 * (double) Candidato.listaDeCandidatos.get(i).getNumDeVotos() / Eleitor.numDeVotantes);
+                    gravarArquivo.printf(Candidato.listaDeCandidatos.get(i) + "; " + Candidato.listaDeCandidatos.get(i).getNumDeVotos() + "; " + String.format("%.2f", porcentagem) + "\n");
                 }
             }
 
@@ -89,6 +89,7 @@ public class Eleicao {
         }
     }
 
+    // Cadastro de um certo número de candidatos
     static public void cadastrarCandidatos(int num) {
         Scanner leitor = new Scanner(System.in);
         String a, b;
@@ -103,7 +104,7 @@ public class Eleicao {
             c = leitor.nextInt();
             leitor.nextLine();
 
-            Candidato cand = new Candidato(a, b, c);
+            new Candidato(a, b, c);
         }
     }
 }
