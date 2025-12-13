@@ -1,5 +1,3 @@
-package Projeto;
-
 public class Urna {
 	public static void votar(Eleitor eleitor, String voto) {
 		if (!eleitor.jaVotou) {

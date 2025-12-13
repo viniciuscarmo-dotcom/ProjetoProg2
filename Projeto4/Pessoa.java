@@ -1,5 +1,3 @@
-package Projeto;
-
 public abstract class Pessoa{
     int diaDeNascimento;
     int mesDeNascimento;

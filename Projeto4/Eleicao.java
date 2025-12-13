@@ -1,19 +1,11 @@
-package Projeto;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.ZonedDateTime;
+import java.util.*;
 
 public class Eleicao {
-    static double numDeVotosValidos;
-    static double maiorVotacao;
+    static int numDeVotosValidos;
+    static int maiorVotacao;
     static List<Candidato> vencedor = new ArrayList<>();;
     static double porcentagemVencedor;
     static Candidato maisVelho;
@@ -54,35 +46,39 @@ public class Eleicao {
             vencedor.add(maisVelho);
         }
         
-        porcentagemVencedor = (100*maiorVotacao/numDeVotosValidos);
+        porcentagemVencedor = (100 * (double) maiorVotacao / numDeVotosValidos);
         nomeDoArquivo = gerarArquivoDaEleicao(registroDeVotos);
 
-        System.out.println("O vencedor da eleição foi: " + vencedor.get(0) + " com " + maiorVotacao + " votos, com " + porcentagemVencedor + "% dos votos válidos.");
+        System.out.println("O vencedor da eleição foi: " + vencedor.get(0) + " com " + maiorVotacao + " votos, com " + String.format("%.2f", porcentagemVencedor) + "% dos votos válidos.");
         System.out.println("Compareceram " + (int) Eleitor.numDeVotantes + " dos " + Eleitor.numDeEleitores + " dos eleitores cadastrados.");
-        System.out.println("Caminho do arquivo da eleição gerado: " + nomeDoArquivo);
+        System.out.println("Nome do relatório da eleição gerado: " + nomeDoArquivo);
     }
 
     // Criação do arquivo da eleição ordenada pela quantidade de votos do com os votos Brancos/Nulos no começo
     static private String gerarArquivoDaEleicao(Map<String, Integer> registroDeVotos) {
         try {
             ZonedDateTime dataAgora = ZonedDateTime.now();
-            // Transforma dataAgora em string, pega só a parta da string antes do ponto (posição 18) e retira todos os : da string
+            // Transforma dataAgora em string, pega só a parte da string antes do ponto (posição 18) e retira todos os ":" da string
             String data = dataAgora.toString().substring(0,18).replace(":", "");
             System.out.println(data);
             String nomeDoArquivo = "Relatório da Eleição " + data + ".txt";
-            FileWriter arquivo = new FileWriter(nomeDoArquivo);
-            PrintWriter gravarArquivo = new PrintWriter(arquivo);
-
-            //Ordenação da lista de candidatos pelo número de votos
-            Collections.sort(Candidato.listaDeCandidatos);
-
-            gravarArquivo.printf("Votos Nulos ou Brancos: " + Candidato.votosNulosOuBrancos + "\n");
-
-            for (int i = 0; i < Candidato.listaDeCandidatos.size(); i++) {
-                gravarArquivo.printf(Candidato.listaDeCandidatos.get(i) + ": " + Candidato.listaDeCandidatos.get(i).numDeVotos + "\n");
+            
+            try (FileWriter arquivo = new FileWriter(nomeDoArquivo)) {
+                PrintWriter gravarArquivo = new PrintWriter(arquivo);
+                double porcentagem;
+                
+                //Ordenação da lista de candidatos pelo número de votos
+                Collections.sort(Candidato.listaDeCandidatos);
+                
+                porcentagem = (100 * (double) Candidato.votosNulosOuBrancos / Eleitor.numDeVotantes);
+                gravarArquivo.printf("Nome do Candidato - Número; Número de Votos; Porcentagem\n");
+                gravarArquivo.printf("Votos Nulos ou Brancos; " + Candidato.votosNulosOuBrancos + "; " + String.format("%.2f", porcentagem) + "\n");
+                
+                for (int i = 0; i < Candidato.listaDeCandidatos.size(); i++) {
+                    porcentagem = (100.0 * (double) Candidato.listaDeCandidatos.get(i).numDeVotos / Eleitor.numDeVotantes);
+                    gravarArquivo.printf(Candidato.listaDeCandidatos.get(i) + "; " + Candidato.listaDeCandidatos.get(i).numDeVotos + "; " + String.format("%.2f", porcentagem) + "\n");
+                }
             }
-
-            arquivo.close();
 
             return nomeDoArquivo;
         } catch (Exception e) {

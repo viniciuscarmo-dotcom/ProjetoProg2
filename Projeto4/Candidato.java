@@ -1,5 +1,3 @@
-package Projeto;
-
 import java.util.*;
 import java.lang.Comparable;
 
