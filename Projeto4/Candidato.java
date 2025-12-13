@@ -1,18 +1,25 @@
 import java.util.*;
-import java.lang.Comparable;
 
 public class Candidato extends Pessoa implements Comparable<Candidato>{
     static int votosNulosOuBrancos;
 	static int quantidadeDeCandidatos;
-	static Map<String, Candidato> cadastroDeCandidatos = new HashMap<>();
+	static Map<Integer, Candidato> cadastroDeCandidatos = new HashMap<>();
     static List<Candidato> listaDeCandidatos = new ArrayList<>();
     String partido;
-    String numeroDoCandidato;
+    int numeroDoCandidato;
     int numDeVotos;
 
-    public Candidato (String nome, String dataDeNascimento, String cpf, String partido, String numeroDoCandidato) {
+    public Candidato (String nome, String dataDeNascimento, String cpf, String partido, int numeroDoCandidato) {
         super(nome, dataDeNascimento, cpf);
         this.partido = partido;
+        this.numeroDoCandidato = numeroDoCandidato;
+        Candidato.quantidadeDeCandidatos++;
+        Candidato.cadastroDeCandidatos.put(numeroDoCandidato, this);
+        Candidato.listaDeCandidatos.add(this);
+    }
+
+    public Candidato (String nome, String dataDeNascimento,  int numeroDoCandidato) {
+        super(nome, dataDeNascimento, "1111");
         this.numeroDoCandidato = numeroDoCandidato;
         Candidato.quantidadeDeCandidatos++;
         Candidato.cadastroDeCandidatos.put(numeroDoCandidato, this);

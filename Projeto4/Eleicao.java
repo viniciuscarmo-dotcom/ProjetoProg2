@@ -13,6 +13,7 @@ public class Eleicao {
     static public void contagemDeVotos() {
         Map<String, Integer> registroDeVotos = new HashMap<String, Integer>();
         String nomeDoArquivo;
+        String empate = ".";
 
         // Adiciona o número de votos nulos e brancos ao número total de votantes
         registroDeVotos.put("Votos Nulos ou Brancos", Candidato.votosNulosOuBrancos);
@@ -41,6 +42,8 @@ public class Eleicao {
             for (int i = 1; i < vencedor.size(); i++) {
                 maisVelho = Candidato.quemEhMaisVelho(maisVelho, vencedor.get(i));
             }
+            
+            empate = ", pelo critério da idade.";
 
             vencedor.clear();
             vencedor.add(maisVelho);
@@ -49,7 +52,7 @@ public class Eleicao {
         porcentagemVencedor = (100 * (double) maiorVotacao / numDeVotosValidos);
         nomeDoArquivo = gerarArquivoDaEleicao(registroDeVotos);
 
-        System.out.println("O vencedor da eleição foi: " + vencedor.get(0) + " com " + maiorVotacao + " votos, com " + String.format("%.2f", porcentagemVencedor) + "% dos votos válidos.");
+        System.out.println("O vencedor da eleição foi: " + vencedor.get(0) + " com " + maiorVotacao + " votos, com " + String.format("%.2f", porcentagemVencedor) + "% dos votos válidos" + empate);
         System.out.println("Compareceram " + (int) Eleitor.numDeVotantes + " dos " + Eleitor.numDeEleitores + " dos eleitores cadastrados.");
         System.out.println("Nome do relatório da eleição gerado: " + nomeDoArquivo);
     }
@@ -60,9 +63,8 @@ public class Eleicao {
             ZonedDateTime dataAgora = ZonedDateTime.now();
             // Transforma dataAgora em string, pega só a parte da string antes do ponto (posição 18) e retira todos os ":" da string
             String data = dataAgora.toString().substring(0,18).replace(":", "");
-            System.out.println(data);
             String nomeDoArquivo = "Relatório da Eleição " + data + ".txt";
-            
+
             try (FileWriter arquivo = new FileWriter(nomeDoArquivo)) {
                 PrintWriter gravarArquivo = new PrintWriter(arquivo);
                 double porcentagem;
@@ -84,6 +86,24 @@ public class Eleicao {
         } catch (Exception e) {
             System.out.println(e);
             return null;
+        }
+    }
+
+    static public void cadastrarCandidatos(int num) {
+        Scanner leitor = new Scanner(System.in);
+        String a, b;
+        int c;
+
+        for (int i = 0; i < num; i++) {
+            System.out.printf("Digite o nome do candidato: ");
+            a = leitor.nextLine();
+            System.out.printf("Digite a data de nascimento do candidato (ex.: 01/01/2000): ");
+            b = leitor.nextLine();
+            System.out.printf("Digite o número do candidato: ");
+            c = leitor.nextInt();
+            leitor.nextLine();
+
+            Candidato cand = new Candidato(a, b, c);
         }
     }
 }

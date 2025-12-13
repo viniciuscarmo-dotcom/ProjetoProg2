@@ -20,20 +20,34 @@ public class Votacao {
         Eleitor eleitor7 = new Eleitor("Mateus", "13/09/1999", "619898159", "646516584");
         */
 
-        Candidato candidato1 = new Candidato("Jose", "17/10/1997", "619898159", "ABC", "99");
-        Candidato candidato2 = new Candidato("Ana", "10/10/1997", "619898159", "EFG", "98");
-        Candidato candidato3 = new Candidato("Mateus", "01/10/1997", "619898159", "HOJ", "97");
+        int cadCandidatos;
+        System.out.printf("Deseja cadastrar os candidatos (1) ou fazer uma eleição com candidatos já cadastrados (qualquer outro número)? ");
+        cadCandidatos = sc.nextInt();
+        sc.nextLine();
+        
+        if (cadCandidatos == 1) {
+            System.out.printf("Digite o número de candidatos que quer cadastrar: ");
+            cadCandidatos = sc.nextInt();
+            sc.nextLine();
+            Eleicao.cadastrarCandidatos(cadCandidatos);
+
+        } else {
+            Candidato candidato1 = new Candidato("Jose", "17/10/1997", "619898159", "ABC", 99);
+            Candidato candidato2 = new Candidato("Ana", "10/10/1997", "619898159", "EFG", 98);
+            Candidato candidato3 = new Candidato("Mateus", "01/10/1997", "619898159", "HOJ", 97);
+        }
+        
 
         menuDeVotacao();
 
         /*
-        urna.votar(eleitor, "99");
-        urna.votar(eleitor2, "98");
-        urna.votar(eleitor2, "98");
-        urna.votar(eleitor4, "98");
-        urna.votar(eleitor5, "97");
-        urna.votar(eleitor6, "98");
-        urna.votar(eleitor7, "98");
+        urna.votar(eleitor, 99);
+        urna.votar(eleitor2, 98);
+        urna.votar(eleitor2, 98);
+        urna.votar(eleitor4, 98);
+        urna.votar(eleitor5, 97);
+        urna.votar(eleitor6, 98);
+        urna.votar(eleitor7, 98);
         */
 
         Eleicao.contagemDeVotos();
@@ -83,15 +97,15 @@ public class Votacao {
 
     private static void votacao() {
         String cpf;
-        String voto;
-        System.out.println("Eleitor, insira seu CPF: ");
+        int voto;
+        System.out.printf("Eleitor, insira seu CPF: ");
         cpf = sc.nextLine();
         for (Eleitor eleitor : eleitores){
             if (eleitor.cpf.equals(cpf)){
                 System.out.println("Bem-vindo, " + eleitor.nome);
                 imprimirCandidatos();
-                System.out.println("Escolha seu candidato: ");
-                voto = sc.nextLine();
+                System.out.printf("Escolha seu candidato: ");
+                voto = sc.nextInt();
 
                 try {
                     Urna.votar(eleitor, voto);

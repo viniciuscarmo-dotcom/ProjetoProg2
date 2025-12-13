@@ -1,5 +1,5 @@
 public class Urna {
-	public static void votar(Eleitor eleitor, String voto) {
+	public static void votar(Eleitor eleitor, int voto) {
 		if (!eleitor.jaVotou) {
 			eleitor.jaVotou = true;
 			Eleitor.numDeVotantes++;
