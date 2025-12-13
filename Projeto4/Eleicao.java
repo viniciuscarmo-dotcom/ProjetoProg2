@@ -16,12 +16,12 @@ public class Eleicao {
         String empate = ".";
 
         // Adiciona o número de votos nulos e brancos ao número total de votantes
-        registroDeVotos.put("Votos Nulos ou Brancos", Candidato.votosNulosOuBrancos);
+        registroDeVotos.put("Votos Nulos ou Brancos", Candidato.getVotosNulosOuBrancos());
 
         // Cria um mapa com o nome do candidato e número de votos (incluindo os votos brancos ou nulos)
         // e adiciona um por um nesse mapa, ao mesmo tempo que checa quem foi o(s) vencedor(es)
-        for (Candidato candidato : Candidato.listaDeCandidatos) {
-            registroDeVotos.put(candidato.nome, candidato.getNumDeVotos());
+        for (Candidato candidato : Candidato.getListaDeCandidatos()) {
+            registroDeVotos.put(candidato.getNome(), candidato.getNumDeVotos());
             numDeVotosValidos += candidato.getNumDeVotos();
 
             if (candidato.getNumDeVotos() == maiorVotacao) {
@@ -53,7 +53,7 @@ public class Eleicao {
         nomeDoArquivo = gerarArquivoDaEleicao(registroDeVotos);
 
         System.out.println("O vencedor da eleição foi: " + vencedor.get(0) + " com " + maiorVotacao + " votos, com " + String.format("%.2f", porcentagemVencedor) + "% dos votos válidos" + empate);
-        System.out.println("Compareceram " + (int) Eleitor.numDeVotantes + " dos " + Eleitor.numDeEleitores + " dos eleitores cadastrados.");
+        System.out.println("Compareceram " + (int) Eleitor.getNumDeVotantes() + " dos " + Eleitor.getNumDeEleitores() + " dos eleitores cadastrados.");
         System.out.println("Nome do relatório da eleição gerado: " + nomeDoArquivo);
     }
 
@@ -70,15 +70,15 @@ public class Eleicao {
                 double porcentagem;
                 
                 //Ordenação da lista de candidatos pelo número de votos
-                Collections.sort(Candidato.listaDeCandidatos);
+                Collections.sort(Candidato.getListaDeCandidatos());
                 
-                porcentagem = (100 * (double) Candidato.votosNulosOuBrancos / Eleitor.numDeVotantes);
+                porcentagem = (100 * (double) Candidato.getVotosNulosOuBrancos() / Eleitor.getNumDeVotantes());
                 gravarArquivo.printf("Nome do Candidato - Número; Número de Votos; Porcentagem\n");
-                gravarArquivo.printf("Votos Nulos ou Brancos; " + Candidato.votosNulosOuBrancos + "; " + String.format("%.2f", porcentagem) + "\n");
+                gravarArquivo.printf("Votos Nulos ou Brancos; " + Candidato.getVotosNulosOuBrancos() + "; " + String.format("%.2f", porcentagem) + "\n");
                 
-                for (int i = 0; i < Candidato.listaDeCandidatos.size(); i++) {
-                    porcentagem = (100.0 * (double) Candidato.listaDeCandidatos.get(i).getNumDeVotos() / Eleitor.numDeVotantes);
-                    gravarArquivo.printf(Candidato.listaDeCandidatos.get(i) + "; " + Candidato.listaDeCandidatos.get(i).getNumDeVotos() + "; " + String.format("%.2f", porcentagem) + "\n");
+                for (int i = 0; i < Candidato.getListaDeCandidatos().size(); i++) {
+                    porcentagem = (100.0 * (double) Candidato.getListaDeCandidatos().get(i).getNumDeVotos() / Eleitor.getNumDeVotantes());
+                    gravarArquivo.printf(Candidato.getListaDeCandidatos().get(i) + "; " + Candidato.getListaDeCandidatos().get(i).getNumDeVotos() + "; " + String.format("%.2f", porcentagem) + "\n");
                 }
             }
 
@@ -103,6 +103,13 @@ public class Eleicao {
             System.out.printf("Digite o número do candidato: ");
             c = leitor.nextInt();
             leitor.nextLine();
+
+            // Só avança para criar o candidato quando verifica que não tem um candidato com o mesmo número
+            while (Candidato.getCadastroDeCandidatos().containsKey(c)) { 
+                System.out.printf("Digite um número de candidato que não esteja sendo usado: ");
+                c = leitor.nextInt();
+                leitor.nextLine();
+            }
 
             new Candidato(a, b, c);
         }

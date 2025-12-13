@@ -2,9 +2,9 @@ public abstract class Pessoa{
     protected int diaDeNascimento;
     protected int mesDeNascimento;
     protected int anoDeNascimento;
-    protected String dataDeNascimento;
-    protected String nome;
-    protected String cpf;
+    private String dataDeNascimento;
+    private String nome;
+    private String cpf;
 
     public Pessoa (String nome, String dataDeNascimento, String cpf){
         this.nome = nome;
@@ -27,5 +27,29 @@ public abstract class Pessoa{
         this.diaDeNascimento = Integer.parseInt(partes[0]);
         this.mesDeNascimento = Integer.parseInt(partes[1]);
         this.anoDeNascimento = Integer.parseInt(partes[2]);
+    }
+
+    public String getCPF() {
+        return cpf;
+    }
+
+    public void setCPF(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDataDeNascimento() {
+        return dataDeNascimento;
+    }
+
+    public void setDataDeNascimento(String dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
     }
 }

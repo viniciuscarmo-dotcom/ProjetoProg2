@@ -1,12 +1,13 @@
 public class Urna {
 	public static void votar(Eleitor eleitor, int voto) {
-		if (!eleitor.isJaVotou()) {
+		if (!eleitor.eleitorJaVotou()) {
 			eleitor.setJaVotou(true);
-			Eleitor.numDeVotantes++;
+			Eleitor.adicionaNumDeVotantes();
+			
 			try {
-				Candidato.cadastroDeCandidatos.get(voto).adicionaNumDeVotos();
+				Candidato.getCadastroDeCandidatos().get(voto).adicionaNumDeVotos();
 			} catch (NullPointerException e){
-				Candidato.votosNulosOuBrancos++;
+				Candidato.adicionaVotosNulosOuBrancos();
 			}
 
             System.out.println("Sucesso!");

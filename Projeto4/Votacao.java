@@ -21,7 +21,7 @@ public class Votacao {
         */
 
         int cadCandidatos;
-        System.out.printf("Deseja cadastrar os candidatos (1) ou fazer uma eleição com candidatos já cadastrados (qualquer outro número)? ");
+        System.out.printf("O que deseja: 1 - Cadastrar candidatos | (outro número) - Eleição com candidato já cadastrados? ");
         cadCandidatos = sc.nextInt();
         sc.nextLine();
         
@@ -37,17 +37,16 @@ public class Votacao {
             Candidato candidato3 = new Candidato("Mateus", "01/10/1997", "619898159", "HOJ", 97);
         }
         
-
         menuDeVotacao();
 
         /*
-        urna.votar(eleitor, 99);
-        urna.votar(eleitor2, 98);
-        urna.votar(eleitor2, 98);
-        urna.votar(eleitor4, 98);
-        urna.votar(eleitor5, 97);
-        urna.votar(eleitor6, 98);
-        urna.votar(eleitor7, 98);
+        Urna.votar(eleitor, 99);
+        Urna.votar(eleitor2, 98);
+        Urna.votar(eleitor2, 98);
+        Urna.votar(eleitor4, 98);
+        Urna.votar(eleitor5, 97);
+        Urna.votar(eleitor6, 98);
+        Urna.votar(eleitor7, 98);
         */
 
         Eleicao.contagemDeVotos();
@@ -55,16 +54,23 @@ public class Votacao {
 
     private static void cadastroEleitores() {
         int qtd;
+        String nome;
+        String cpf;
 
-        System.out.print("Quantos eleitores: ");
+        System.out.printf("Quantos eleitores: ");
         qtd = sc.nextInt();
         sc.nextLine();
 
         for (int i = 0; i < qtd; i++){
-            System.out.println("Nome: ");
-            String nome = sc.nextLine();
-            System.out.println("CPF: ");
-            String cpf = sc.nextLine();
+            System.out.printf("Nome: ");
+            nome = sc.nextLine();
+            System.out.printf("CPF: ");
+            cpf = sc.nextLine();
+
+            while (Eleitor.verificarCPFValido(cpf)) {
+                System.out.printf("CPF inválido. Digite novamente: ");
+                cpf = sc.nextLine();
+            }
 
             Eleitor obj = new Eleitor(nome, cpf);
             eleitores.add(obj);
@@ -73,7 +79,7 @@ public class Votacao {
 
     private static void menuDeVotacao() {
         int variavel = 0;
-        while (variavel != 2 && cont < Eleitor.numDeEleitores){
+        while (variavel != 2 && cont < Eleitor.getNumDeEleitores()){
             System.out.println("O que deseja: ");
             System.out.println("1 - Votar");
             System.out.println("2 - Encerrar votação");
@@ -90,7 +96,7 @@ public class Votacao {
     }
 
     private static void imprimirCandidatos() {
-        for (Candidato candidato : Candidato.listaDeCandidatos){
+        for (Candidato candidato : Candidato.getListaDeCandidatos()){
             System.out.println(candidato);
         }
     }
@@ -101,8 +107,8 @@ public class Votacao {
         System.out.printf("Eleitor, insira seu CPF: ");
         cpf = sc.nextLine();
         for (Eleitor eleitor : eleitores){
-            if (eleitor.cpf.equals(cpf)){
-                System.out.println("Bem-vindo, " + eleitor.nome);
+            if (eleitor.getCPF().equals(cpf)){
+                System.out.println("Bem-vindo, " + eleitor.getNome());
                 imprimirCandidatos();
                 System.out.printf("Escolha seu candidato: ");
                 voto = sc.nextInt();
