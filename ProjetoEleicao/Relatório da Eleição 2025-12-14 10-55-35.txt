@@ -1,0 +1,5 @@
+Nome do Candidato - Número; Número de Votos; Porcentagem
+Votos Nulos ou Brancos; 1; 25,00
+Jose - 99; 2; 50,00
+Ana - 98; 1; 25,00
+Mateus - 97; 0; 0,00

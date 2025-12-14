@@ -1,0 +1,5 @@
+Nome do Candidato - Número; Número de Votos; Porcentagem
+Votos Nulos ou Brancos; 0; 0,00
+Carlos - 99; 4; 80,00
+Joao - 97; 1; 20,00
+Vinicius - 98; 0; 0,00
