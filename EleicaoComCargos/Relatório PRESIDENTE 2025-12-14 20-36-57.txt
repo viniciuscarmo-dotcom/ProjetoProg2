@@ -1,0 +1,7 @@
+RELATÓRIO DE ELEIÇÃO - PRESIDENTE
+--------------------------------------------------
+Votos Nulos/Brancos (PRESIDENTE): 0 (0,00% do total de votantes)
+--------------------------------------------------
+Nome - Número; Votos
+[PRESIDENTE] carlos - 12; 1 votos
+[PRESIDENTE] joao - 15; 1 votos

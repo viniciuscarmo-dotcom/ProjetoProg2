@@ -1,0 +1,7 @@
+RELATÓRIO DE ELEIÇÃO - PREFEITO
+--------------------------------------------------
+Votos Nulos/Brancos (PREFEITO): 1 (12,50% do total de votantes)
+--------------------------------------------------
+Nome - Número; Votos
+[PREFEITO] jonas - 14; 1 votos
+[PREFEITO] lucas - 15; 0 votos

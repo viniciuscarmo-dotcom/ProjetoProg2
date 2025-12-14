@@ -5,10 +5,8 @@ import java.io.PrintWriter;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import static prog2.projeto.Votacao.sc;
+import java.util.Scanner;
 
 public class Eleicao {
 
@@ -52,7 +50,7 @@ public class Eleicao {
                 }
             }
 
-            // Desempate por idade
+            // Caso não haja nenhum voto válido
             if (vencedoresCargo.isEmpty() || maiorVotacaoCargo == 0) {
                 System.out.println("\n-------------------------------------------");
                 System.out.println("CARGO: " + cargoAtual);
@@ -63,6 +61,7 @@ public class Eleicao {
 
             Candidato vencedorFinal;
 
+            // Desempate por idade
             if (vencedoresCargo.size() == 1) {
                 vencedorFinal = vencedoresCargo.get(0);
             } else {
@@ -71,7 +70,7 @@ public class Eleicao {
                 for (int i = 1; i < vencedoresCargo.size(); i++) {
                     vencedorFinal = Candidato.quemEhMaisVelho(vencedorFinal, vencedoresCargo.get(i));
                 }
-                criterioDesempate = " , pelo critério de idade.";
+                criterioDesempate = "pelo critério de idade.";
             }
 
             // Resultado
@@ -160,5 +159,61 @@ public class Eleicao {
             System.out.println("Erro ao gerar arquivos: " + e);
             return new ArrayList<>();
         }
+    }
+
+    static public void cadastrarEleitores(int num) {
+        Scanner leitor = new Scanner(System.in);
+        String nome, cpf;
+
+        for (int i = 0; i < num; i++){
+            System.out.printf("\nNome: ");
+            nome = leitor.nextLine();
+            System.out.printf("CPF: ");
+            cpf = leitor.nextLine();
+
+            // Só avança para criar o eleitor quando verifica que não tem um eleitor com o mesmo cpf
+            while (Eleitor.verificarCPFValido(cpf)) {
+                System.out.printf("CPF inválido. Digite novamente: ");
+                cpf = leitor.nextLine();
+            }
+            
+            new Eleitor(nome, cpf);
+        }
+    }
+
+    static public void cadastrarCandidatos() {
+        Scanner leitor = new Scanner(System.in);
+        String nome, data;
+        int numero;
+        int cont;
+        String[] cargos = {"PRESIDENTE", "PREFEITO", "VEREADOR"};
+
+        for (int j = 0; j < 3; j++) {
+            System.err.println("\nCadastro de " + cargos[j]);
+            System.out.printf("Digite quantos candidatos quer cadastrar: ");
+            cont = leitor.nextInt();
+            leitor.nextLine();
+
+            for (int i = 0; i < cont; i++) {
+                System.out.printf("\nDigite o nome do candidato: ");
+                nome = leitor.nextLine();
+                System.out.printf("Digite a data de nascimento do candidato (ex.: 01/01/2000): ");
+                data = leitor.nextLine();
+                System.out.printf("Digite o número do candidato (2 p/ presidente e prefeito, 5 p/ vereador): ");
+                numero = leitor.nextInt();
+                leitor.nextLine();
+
+                // Só avança para criar o candidato quando verifica que não tem um candidato com o mesmo número
+                while (Candidato.getCadastroDeCandidatos().containsKey(Cargo.valueOf(cargos[j])+"-"+numero)) { 
+                    System.out.printf("Digite um número de candidato que não esteja sendo usado: ");
+                    numero = leitor.nextInt();
+                    leitor.nextLine();
+                }
+
+                new Candidato(nome, data, numero, Cargo.valueOf(cargos[j]));
+            }
+        }
+
+        
     }
 }

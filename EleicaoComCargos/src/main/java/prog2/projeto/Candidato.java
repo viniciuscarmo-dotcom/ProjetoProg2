@@ -53,7 +53,7 @@ public class Candidato extends Pessoa implements Comparable<Candidato> {
 
     // Muda o número do candidato, caso o número não esteja sendo usado
     public void setNumeroDoCandidato(int numeroDoCandidato) {
-        if (!cadastroDeCandidatos.containsKey(numeroDoCandidato)) {
+        if (!cadastroDeCandidatos.containsKey(cargo.name() +"-"+numeroDoCandidato)) {
             this.numeroDoCandidato = numeroDoCandidato;
         }
     }

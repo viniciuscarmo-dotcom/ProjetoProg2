@@ -1,0 +1,7 @@
+RELATÓRIO DE ELEIÇÃO - VEREADOR
+--------------------------------------------------
+Votos Nulos/Brancos (VEREADOR): 2 (25,00% do total de votantes)
+--------------------------------------------------
+Nome - Número; Votos
+[VEREADOR] lima - 12121; 0 votos
+[VEREADOR] lando - 12122; 0 votos

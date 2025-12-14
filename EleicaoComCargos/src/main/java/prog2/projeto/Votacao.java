@@ -26,8 +26,8 @@ public class Votacao {
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
             System.out.println("\n--- URNA JAVAI ---");
-            System.out.println("1 - Upload de eleitores");
-            System.out.println("2 - Upload de candidatos");
+            System.out.println("1 - Cadastrar eleitores");
+            System.out.println("2 - Cadastrar candidatos");
             System.out.println("3 - Upload padrão");
             System.out.println("4 - Exibir eleitores");
             System.out.println("5 - Exibir candidatos");
@@ -46,15 +46,45 @@ public class Votacao {
 
             switch (opcao) {
                 case 1:
-                    System.out.print("Digite o caminho do arquivo de eleitores: ");
-                    caminho = sc.nextLine();
-                    carregarEleitores(caminho);
-                    break;
+                    System.out.println("\n1 - Usar arquivo");
+                    System.out.println("2 - Cadastrar pelo terminal");
+                    System.out.print("Escolha uma opção: ");
+
+                    int num = sc.nextInt();
+                    sc.nextLine();
+
+                    if (num == 1) {
+                        System.out.print("Digite o caminho do arquivo de eleitores: ");
+                        caminho = sc.nextLine();
+                        carregarEleitores(caminho);
+                        break;
+                    } else {
+                        System.out.print("\nQuantos eleitores: ");
+                        num = sc.nextInt();
+                        sc.nextLine();
+                        Eleicao.cadastrarEleitores(num);
+                        break;
+                    }
+                    
                 case 2:
-                    System.out.print("Digite o caminho do arquivo de candidatos: ");
-                    caminho = sc.nextLine();
-                    carregarCandidatos(caminho);
-                    break;
+                    System.out.println("\n1 - Usar arquivo");
+                    System.out.println("2 - Cadastrar pelo terminal");
+                    System.out.print("Escolha uma opção: ");
+
+                    int num2 = sc.nextInt();
+                    sc.nextLine();
+
+                    if (num2 == 1) {
+                        System.out.print("Digite o caminho do arquivo de candidatos: ");
+                        caminho = sc.nextLine();
+                        carregarCandidatos(caminho);
+                        break;
+                    } else {
+                        Eleicao.cadastrarCandidatos();
+                        break;
+                    }
+
+                    
                 case 3:
                     carregarEleitores("eleitores.txt");
                     carregarCandidatos("candidatos.txt");
