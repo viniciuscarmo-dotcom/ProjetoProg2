@@ -2,7 +2,8 @@ package prog2.projeto;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Votacao {
@@ -50,7 +51,7 @@ public class Votacao {
                     carregarEleitores(caminho);
                     break;
                 case 2:
-                    System.out.print("Digite o caminho do arquivo de eleitores: ");
+                    System.out.print("Digite o caminho do arquivo de candidatos: ");
                     caminho = sc.nextLine();
                     carregarCandidatos(caminho);
                     break;
@@ -199,9 +200,17 @@ public class Votacao {
 
         System.out.println("\n--- URNA ABERTA ---");
         System.out.println("Digite 'SAIR' no CPF para encerrar.");
+        boolean primeiraRodada = false;
 
         while (true) {
-            System.out.print("\nDigite o CPF do eleitor: ");
+            if (primeiraRodada) {
+                System.out.println("Digite 'SAIR' no CPF para encerrar.\n");
+            } else {
+                primeiraRodada = true;
+                System.out.println();
+            }
+
+            System.out.print("Digite o CPF do eleitor: ");
             String cpf = sc.nextLine();
 
             if (cpf.equalsIgnoreCase("SAIR")) break;
@@ -244,7 +253,7 @@ public class Votacao {
 
             if (votouNessaSessao) {
                 System.out.println("\nFIM! Obrigado pelo voto, " + eleitorAtual.getNome());
-                Eleitor.adicionaNumDeVotantes();
+                Eleitor.adicionaNumDeVotantes("123456789");
                 System.out.println("Pressione ENTER para o próximo eleitor...");
                 sc.nextLine();
             } else {

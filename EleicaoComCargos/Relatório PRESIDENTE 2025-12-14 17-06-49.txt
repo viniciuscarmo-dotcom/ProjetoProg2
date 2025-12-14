@@ -1,0 +1,9 @@
+RELATÓRIO DE ELEIÇÃO - PRESIDENTE
+--------------------------------------------------
+Votos Nulos/Brancos (PRESIDENTE): 2 (5,00% do total de votantes)
+--------------------------------------------------
+Nome - Número; Votos
+[PRESIDENTE] Joãozinho Bar da Curva - 10; 7 votos
+[PRESIDENTE] Maria do Contorno - 20; 1 votos
+[PRESIDENTE] Carlão da Federal - 30; 0 votos
+[PRESIDENTE] Aninha do Povo - 45; 0 votos

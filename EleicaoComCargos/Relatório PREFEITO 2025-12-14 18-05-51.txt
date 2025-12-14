@@ -1,0 +1,9 @@
+RELATÓRIO DE ELEIÇÃO - PREFEITO
+--------------------------------------------------
+Votos Nulos/Brancos (PREFEITO): 1 (8,33% do total de votantes)
+--------------------------------------------------
+Nome - Número; Votos
+[PREFEITO] José da CG - 10; 2 votos
+[PREFEITO] Roberto Carlos em Detalhes - 20; 0 votos
+[PREFEITO] Fernanda da Comuna - 45; 0 votos
+[PREFEITO] Pastor Ricardão - 50; 0 votos

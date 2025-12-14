@@ -1,0 +1,18 @@
+Joãozinho Bar da Curva; 15/03/1955; 10; PRESIDENTE
+Maria do Contorno; 20/05/1975; 20; PRESIDENTE
+Carlão da Federal; 10/10/1980; 30; PRESIDENTE
+Aninha do Povo; 02/02/1960; 45; PRESIDENTE
+José da CG; 05/12/1958; 10; PREFEITO
+Roberto Carlos em Detalhes; 01/01/1970; 20; PREFEITO
+Fernanda da Comuna; 25/04/1982; 45; PREFEITO
+Pastor Ricardão; 12/08/1965; 50; PREFEITO
+Bruno do Galeto; 12/06/1990; 10123; VEREADOR
+Carla do Botijão; 30/08/1985; 10555; VEREADOR
+Daniel da Praça é Nossa; 14/02/1978; 20000; VEREADOR
+Eduardo Empreiteiro; 19/11/1995; 20111; VEREADOR
+Professora Fabiana; 03/03/1988; 45123; VEREADOR
+Gabriel da UBS; 07/07/1977; 45999; VEREADOR
+Helena do Minibox; 21/09/1992; 50100; VEREADOR
+Flavinho do Pneu; 11/11/1980; 50200; VEREADOR
+Juliana da Betoneira; 15/05/1983; 30111; VEREADOR
+General Osvaldo  ; 28/02/1998; 30222; VEREADOR

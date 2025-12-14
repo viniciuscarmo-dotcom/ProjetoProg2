@@ -1,0 +1,15 @@
+RELATÓRIO DE ELEIÇÃO - VEREADOR
+--------------------------------------------------
+Votos Nulos/Brancos (VEREADOR): 5 (12,50% do total de votantes)
+--------------------------------------------------
+Nome - Número; Votos
+[VEREADOR] Bruno do Galeto - 10123; 5 votos
+[VEREADOR] Carla do Botijão - 10555; 0 votos
+[VEREADOR] Daniel da Praça é Nossa - 20000; 0 votos
+[VEREADOR] Eduardo Empreiteiro - 20111; 0 votos
+[VEREADOR] Professora Fabiana - 45123; 0 votos
+[VEREADOR] Gabriel da UBS - 45999; 0 votos
+[VEREADOR] Helena do Minibox - 50100; 0 votos
+[VEREADOR] Flavinho do Pneu - 50200; 0 votos
+[VEREADOR] Juliana da Betoneira - 30111; 0 votos
+[VEREADOR] General Osvaldo - 30222; 0 votos

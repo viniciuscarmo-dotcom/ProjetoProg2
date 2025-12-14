@@ -8,16 +8,16 @@ public class Urna {
             Candidato candidato = Candidato.getCadastroDeCandidatos().get(chave);
 
             if (candidato != null) {
-                candidato.adicionaNumDeVotos();
+                candidato.adicionaNumDeVotos("123456789");
                 System.out.println("Voto confirmado para " + cargoAtual + ": " + candidato.getNome());
             } else {
-                Candidato.adicionaVotoNulo(cargoAtual);
+                Candidato.adicionaVotoNulo(cargoAtual, "123456789");
 
                 System.out.println("Voto Nulo/Branco computado para " + cargoAtual + ".");
             }
 
-            eleitor.registrarVoto(cargoAtual);
-            Eleitor.adicionaNumDeVotantes();
+            eleitor.registrarVoto(cargoAtual, "123456789");
+            Eleitor.adicionaNumDeVotantes("123456789");
         } else {
             System.out.println("Eleitor já votou para " + cargoAtual);
         }
