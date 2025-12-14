@@ -67,19 +67,24 @@ public class Candidato extends Pessoa implements Comparable<Candidato>{
     // Verifica qual dos candidatos é mais velho, caso tenham a mesma idade sorteia um deles
     public static Candidato quemEhMaisVelho(Candidato candidato1, Candidato candidato2) {
         // Verifica ano, mês e dia de nascimento para dizer quem é mais velho
-        if (candidato1.anoDeNascimento < candidato2.anoDeNascimento) {
+        if (candidato1.getAnoDeNascimento() < candidato2.getAnoDeNascimento()) {
             return candidato1;
-        } else if (candidato2.anoDeNascimento < candidato1.anoDeNascimento) {
+
+        } else if (candidato2.getAnoDeNascimento() < candidato1.getAnoDeNascimento()) {
             return candidato2;
+
         } else {
-            if (candidato1.mesDeNascimento < candidato2.mesDeNascimento) {
+            if (candidato1.getMesDeNascimento() < candidato2.getMesDeNascimento()) {
                 return candidato1;
-            } else if (candidato2.mesDeNascimento < candidato1.mesDeNascimento) {
+
+            } else if (candidato2.getMesDeNascimento() < candidato1.getMesDeNascimento()) {
                 return candidato2;
+
             } else {
-                if (candidato1.diaDeNascimento < candidato2.diaDeNascimento) {
+                if (candidato1.getDiaDeNascimento() < candidato2.getDiaDeNascimento()) {
                     return candidato1;
-                } else if (candidato2.mesDeNascimento < candidato1.diaDeNascimento) {
+                    
+                } else if (candidato2.getDiaDeNascimento() < candidato1.getDiaDeNascimento()) {
                     return candidato2;
                 }
             }      

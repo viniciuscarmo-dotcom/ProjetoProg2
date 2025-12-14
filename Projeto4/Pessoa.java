@@ -1,7 +1,7 @@
 public abstract class Pessoa{
-    protected int diaDeNascimento;
-    protected int mesDeNascimento;
-    protected int anoDeNascimento;
+    private int diaDeNascimento;
+    private int mesDeNascimento;
+    private int anoDeNascimento;
     private String dataDeNascimento;
     private String nome;
     private String cpf;
@@ -51,5 +51,29 @@ public abstract class Pessoa{
 
     public void setDataDeNascimento(String dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
+    }
+
+    public int getDiaDeNascimento() {
+        return diaDeNascimento;
+    }
+
+    public void setDiaDeNascimento(int diaDeNascimento) {
+        this.diaDeNascimento = diaDeNascimento;
+    }
+
+    public int getMesDeNascimento() {
+        return mesDeNascimento;
+    }
+
+    public void setMesDeNascimento(int mesDeNascimento) {
+        this.mesDeNascimento = mesDeNascimento;
+    }
+
+    public int getAnoDeNascimento() {
+        return anoDeNascimento;
+    }
+
+    public void setAnoDeNascimento(int anoDeNascimento) {
+        this.anoDeNascimento = anoDeNascimento;
     }
 }

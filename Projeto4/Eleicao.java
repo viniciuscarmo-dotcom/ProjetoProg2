@@ -53,7 +53,7 @@ public class Eleicao {
         nomeDoArquivo = gerarArquivoDaEleicao(registroDeVotos);
 
         System.out.println("O vencedor da eleição foi: " + vencedor.get(0) + " com " + maiorVotacao + " votos, com " + String.format("%.2f", porcentagemVencedor) + "% dos votos válidos" + empate);
-        System.out.println("Compareceram " + (int) Eleitor.getNumDeVotantes() + " dos " + Eleitor.getNumDeEleitores() + " dos eleitores cadastrados.");
+        System.out.println("Compareceram " + Eleitor.getNumDeVotantes() + " dos " + Eleitor.getNumDeEleitores() + " dos eleitores cadastrados.");
         System.out.println("Nome do relatório da eleição gerado: " + nomeDoArquivo);
     }
 

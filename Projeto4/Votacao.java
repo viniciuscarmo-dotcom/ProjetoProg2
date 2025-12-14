@@ -30,7 +30,6 @@ public class Votacao {
             cadCandidatos = sc.nextInt();
             sc.nextLine();
             Eleicao.cadastrarCandidatos(cadCandidatos);
-
         } else {
             Candidato candidato1 = new Candidato("Jose", "17/10/1997", "619898159", "ABC", 99);
             Candidato candidato2 = new Candidato("Ana", "10/10/1997", "619898159", "EFG", 98);
@@ -85,6 +84,7 @@ public class Votacao {
             System.out.println("2 - Encerrar votação");
             variavel = sc.nextInt();
             sc.nextLine();
+
             switch (variavel) {
                 case 1:
                     votacao();
