@@ -17,7 +17,6 @@ public class Urna {
             }
 
             eleitor.registrarVoto(cargoAtual, "123456789");
-            Eleitor.adicionaNumDeVotantes("123456789");
         } else {
             System.out.println("Eleitor já votou para " + cargoAtual);
         }

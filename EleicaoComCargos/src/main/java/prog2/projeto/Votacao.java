@@ -257,6 +257,8 @@ public class Votacao {
                 System.out.println("Eleitor não encontrado.");
                 continue;
             }
+
+            System.out.println("Seja bem vindo, " + eleitorAtual.getNome());
             
             boolean votouNessaSessao = false;
 
